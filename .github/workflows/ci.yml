@@ -47,6 +47,7 @@ jobs:
               - 'yarn.lock'
               - '**/*.js'
               - 'resources/**/!(*.spec|*.po|*.host).ts'
+              - 'tests/Cypress/**/*.ts'
               - '**/*.html'
               - '**/*.css'
               - '**/*.scss'
