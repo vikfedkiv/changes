@@ -8,8 +8,6 @@ jobs:
   frontend_test:
     runs-on: self-hosted
     steps:
-      - name: Checkout 🚗
-        uses: actions/checkout@v3
       - name: Frontend changes 🚗
         uses: dorny/paths-filter@v2
         id: filter
@@ -39,8 +37,6 @@ jobs:
   e2e_cypress:
     runs-on: self-hosted
     steps:
-      - name: Checkout 🚗
-        uses: actions/checkout@v3
       - name: Cypress changes 🚗
         uses: dorny/paths-filter@v2
         id: filter
