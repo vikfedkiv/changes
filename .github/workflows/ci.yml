@@ -59,7 +59,7 @@ jobs:
               - 'resources/assets/**/*.host.ts'
               - 'resources/assets/**/*.spec.ts'
       - name: Run E2E Cypress test 🚗
-        if: steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude != 'true'
+        if: (steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude == 'true') || steps.filter.outputs.frontend == 'true'
         run: |
             echo "Run E2E Cypress test"
 
