@@ -48,6 +48,7 @@ jobs:
               - '**/*.js'
               - 'resources/**/!(*.spec|*.po|*.host).ts'
               - 'tests/Cypress/**/*.ts'
+              - '*.ts'
               - '**/*.html'
               - '**/*.css'
               - '**/*.scss'
