@@ -1,8 +1,8 @@
 name: CI/CD
 
 on:
-  push:
-    branches: [ changes-test ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   frontend_test:
