@@ -54,12 +54,16 @@ jobs:
               - '.github/workflows/*.yml'
               - '**/*.json'
               - '**/*.sh'
-            exclude:
-              - 'resources/assets/**/*.po.ts'
-              - 'resources/assets/**/*.host.ts'
-              - 'resources/assets/**/*.spec.ts'
+              - '!resources/assets/**/*.po.ts'
+              - '!resources/assets/**/*.host.ts'
+              - '!resources/assets/**/*.spec.ts'
+                ##            exclude:
+                ##              - 'resources/assets/**/*.po.ts'
+                ##              - 'resources/assets/**/*.host.ts'
+                ##              - 'resources/assets/**/*.spec.ts'
       - name: Run E2E Cypress test 🚗
-        if: (steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude == 'true') || steps.filter.outputs.frontend == 'true'
+        #        if: (steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude == 'true') || steps.filter.outputs.frontend == 'true'
+        if: steps.filter.outputs.frontend == 'true'
         run: |
             echo "Run E2E Cypress test"
 
