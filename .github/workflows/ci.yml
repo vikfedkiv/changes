@@ -22,6 +22,7 @@ jobs:
               - '**/*.css'
               - '**/*.scss'
               - '*.yml'
+              - '.github/workflows/*.yml'
               - '**/*.json'
               - '**/*.sh'
             exclude:
@@ -29,7 +30,7 @@ jobs:
               - 'tests/Cypress/**/*.host.ts'
               - 'tests/Cypress/**/*.spec.ts'
       - name: Run Frontend test 🚗
-        if: steps.filter.outputs.frontend == 'true' && steps.filter.outputs.frontend != 'true'
+        if: steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude != 'true'
         run: |
             echo "Run Frontend test"
 
@@ -50,10 +51,15 @@ jobs:
               - '**/*.css'
               - '**/*.scss'
               - '*.yml'
+              - '.github/workflows/*.yml'
               - '**/*.json'
               - '**/*.sh'
+            exclude:
+              - 'resources/assets/**/*.po.ts'
+              - 'resources/assets/**/*.host.ts'
+              - 'resources/assets/**/*.spec.ts'
       - name: Run E2E Cypress test 🚗
-        if: steps.filter.outputs.frontend == 'true'
+        if: steps.filter.outputs.frontend == 'true' && steps.filter.outputs.exclude != 'true'
         run: |
             echo "Run E2E Cypress test"
 
