@@ -24,6 +24,7 @@ jobs:
               - '**/*.css'
               - '**/*.scss'
               - '*.yml'
+              - '.github/workflows/*.yml'
               - '**/*.json'
               - '**/*.sh'
             exclude:
@@ -54,6 +55,7 @@ jobs:
               - '**/*.css'
               - '**/*.scss'
               - '*.yml'
+              - '.github/workflows/*.yml'
               - '**/*.json'
               - '**/*.sh'
       - name: Run E2E Cypress test 🚗
