@@ -1,0 +1,13 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  tests:
+    runs-on: self-hosted
+    steps:
+      - name: Tests 🚗
+        run: |
+            echo "Run tests"
