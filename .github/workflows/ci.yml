@@ -5,9 +5,55 @@ on:
     branches: [ main ]
 
 jobs:
-  tests:
+  frontend_test:
     runs-on: self-hosted
     steps:
-      - name: Tests 🚗
+      - name: Frontend changes 🚗
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'package.json'
+              - 'yarn.lock'
+              - '**/*.js'
+              - '**/*.ts'
+              - '**/*.html'
+              - '**/*.css'
+              - '**/*.scss'
+              - '*.yml'
+              - '**/*.json'
+              - '**/*.sh'
+            exclude:
+              - 'tests/Cypress/**/*.po.ts'
+              - 'tests/Cypress/**/*.host.ts'
+              - 'tests/Cypress/**/*.spec.ts'
+      - name: Run Frontend test 🚗
+        if: steps.filter.outputs.frontend == 'true' && steps.filter.outputs.frontend != 'true'
         run: |
-            echo "Run tests"
+            echo "Run Frontend test"
+
+  e2e_cypress:
+    runs-on: self-hosted
+    steps:
+      - name: Cypress changes 🚗
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'package.json'
+              - 'yarn.lock'
+              - '**/*.js'
+              - '**/*.ts'
+              - '**/*.html'
+              - '**/*.css'
+              - '**/*.scss'
+              - '*.yml'
+              - '**/*.json'
+              - '**/*.sh'
+      - name: Run E2E Cypress test 🚗
+        if: steps.filter.outputs.frontend == 'true'
+        run: |
+            echo "Run E2E Cypress test"
+
